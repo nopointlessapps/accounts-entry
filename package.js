@@ -1,5 +1,5 @@
 Package.describe({
-    summary: "Make signin and signout their own pages with routes."
+    summary: "Make signin and signout their own pages with routes. NPA fork of accounts-entry"
 });
 
 Package.on_use(function(api) {
@@ -14,7 +14,7 @@ Package.on_use(function(api) {
     'handlebars',
     'session',
     'coffeescript',
-    'simple-form',
+    'joshowens:simple-form',
     'less',
     'sha']
   , 'client');
@@ -71,8 +71,8 @@ Package.on_use(function(api) {
   api.imply('accounts-base', ['client', 'server']);
   api.imply('accounts-password', ['client', 'server']);
   api.export('AccountsEntry', ['client', 'server']);
-  api.use('iron-router', ['client', 'server']);
-  api.use(['accounts-t9n'], ['client', 'server']);
+  api.use('iron:router', ['client', 'server']);
+  api.use(['mrt:accounts-t9n'], ['client', 'server']);
   api.add_files(['shared/router.coffee'], ['client', 'server']);
 
 });
@@ -85,8 +85,8 @@ Package.on_test(function (api) {
             'templating',
             'mongo-livedata',
             'coffeescript',
-            'simple-form',
-            'iron-router']);
+            'joshowens:simple-form',
+            'iron:router']);
   api.use('accounts-entry');
 
   api.add_files(['tests/route.coffee', 'tests/client.html', 'tests/client.coffee'], 'client');
